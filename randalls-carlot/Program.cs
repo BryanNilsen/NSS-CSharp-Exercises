@@ -44,7 +44,7 @@ namespace randalls_carlot
               {"account", "34578280562836"}
           };
 
-      // CREATE LIST OF VEHICLE DICTIONARIES
+      // CREATE VEHICLE DICTIONARIES
       Dictionary<string, Dictionary<string, string>> vehicle1Dict = new Dictionary<string, Dictionary<string, string>>();
       vehicle1Dict.Add("vehicle", vehicle1);
       vehicle1Dict.Add("sales_agent", sagent1);
@@ -56,24 +56,31 @@ namespace randalls_carlot
       vehicle2Dict.Add("credit", credit2);
 
 
+      // CREATE LIST OF VEHICLES
+      List<Dictionary<string, Dictionary<string, string>>> vehicleList = new List<Dictionary<string, Dictionary<string, string>>>();
+      vehicleList.Add(vehicle1Dict);
+      vehicleList.Add(vehicle2Dict);
 
-      foreach (KeyValuePair<string, Dictionary<string, string>> entry in vehicle2Dict)
+
+      vehicles.Add("vehicles", vehicleList);
+
+      foreach (KeyValuePair<string, List<Dictionary<string, Dictionary<string, string>>>> vehicle in vehicles)
       {
+        Console.WriteLine($"MAIN DICTIONARY LIST NAME: {vehicle.Key}");
 
-        Console.WriteLine(entry.Key);
-        foreach (KeyValuePair<string, string> item in entry.Value)
+        foreach (Dictionary<string, Dictionary<string, string>> thing in vehicleList)
         {
-          Console.WriteLine($"  {item.Key}: {item.Value}");
-
+          Console.WriteLine("VEHICLE DATA");
+          foreach (KeyValuePair<string, Dictionary<string, string>> entry in thing)
+          {
+            Console.WriteLine($"  {entry.Key}");
+            foreach (KeyValuePair<string, string> item in entry.Value)
+            {
+              Console.WriteLine($"   - {item.Key}: {item.Value}");
+            }
+          }
         }
-
       }
-
-      // foreach (KeyValuePair<string, string> entry in credit1)
-      // {
-      //   Console.WriteLine(entry);
-      // }
-
     }
   }
 }
