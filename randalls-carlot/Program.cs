@@ -61,9 +61,10 @@ namespace randalls_carlot
       vehicleList.Add(vehicle1Dict);
       vehicleList.Add(vehicle2Dict);
 
-
+      // ADD LIST OF VEHICLES TO MAIN VEHICLES DICTIONARY
       vehicles.Add("vehicles", vehicleList);
 
+      // ITERATE OVER MAIN VEHICLES DICTIONARY TO OUTPUT ALL DATA TO CONSOLE
       foreach (KeyValuePair<string, List<Dictionary<string, Dictionary<string, string>>>> vehicle in vehicles)
       {
         Console.WriteLine($"MAIN DICTIONARY LIST NAME: {vehicle.Key}");
