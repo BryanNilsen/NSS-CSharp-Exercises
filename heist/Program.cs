@@ -12,6 +12,28 @@ namespace heist
       // Print the message "Plan Your Heist!".
       Console.WriteLine("Plan Your Heist!");
 
+      // Store a value for the bank's difficulty level.
+      int bankDifficulty = 0;
+
+      // At the beginning of the program, prompt the user to enter the difficulty level of the bank.
+      while (bankDifficulty == 0)
+      {
+        Console.WriteLine("Enter Bank Difficulty: ");
+        int bankDifficultyInput;
+
+        if (!int.TryParse(Console.ReadLine(), out bankDifficultyInput))
+        {
+          Console.Clear();
+          Console.WriteLine("!! Please Enter a number greater than 0");
+        }
+        else
+        {
+          bankDifficulty = Convert.ToInt32(bankDifficultyInput);
+        }
+      }
+
+
+
       // Create a way to store several team members. Each team member will have a Name and a Skill Level. The Skill Level will be a number.
       List<Dictionary<string, int>> team = new List<Dictionary<string, int>>();
 
@@ -48,7 +70,7 @@ namespace heist
       // Display a message containing the number of members of the team.
       Console.WriteLine($"There are {team.Count} team members:");
 
-      // Display each team member's information.
+      // Display each team member's information. (COMMENTED OUT PER INSTRUCTIONS)
       // foreach (Dictionary<string, int> item in team)
       // {
       //   foreach (KeyValuePair<string, int> kvp in item)
@@ -57,16 +79,14 @@ namespace heist
       //   }
       // }
 
-
-      // Store a value for the bank's difficulty level. Set this value to 100.
-      int bankDifficulty = 100;
-
-
       // After the user enters the team information, prompt them to enter the number of trial runs the program should perform.
       Console.WriteLine("Enter Number of Trial Runs: ");
       string trialRunsInput = Console.ReadLine();
       int trialRuns = Convert.ToInt32(trialRunsInput);
 
+
+      // set initial number of successful heists
+      int successfulHeists = 0;
 
 
       // Run the scenario multiple times.
@@ -95,7 +115,6 @@ namespace heist
         // The luck factor
         // The team's skill level plus the luck factor.
         // The bank's difficulty.
-
         Console.WriteLine($"HEIST REPORT:");
         Console.WriteLine($"  - Team Combined Skill Level: {teamSkillLevel}");
         Console.WriteLine($"  - LuckFactor: {luckFactor}");
@@ -104,16 +123,24 @@ namespace heist
 
 
         // Compare the number with the bank's difficulty level. If the team's skill level is greater than or equal to the bank's difficulty level, Display a success message, otherwise display a failure message.
-
         if (teamSkillLevel + luckFactor >= bankDifficulty)
         {
           Console.WriteLine($"The heist was Successful!");
+
+          // increment successful heist count
+          successfulHeists++;
         }
         else
         {
           Console.WriteLine($"The heist failed!");
         }
       }
+
+      // At the end of the program, display a report showing the number of successful runs and the number of failed runs.
+      Console.WriteLine($"TOTAL HEISTS: {trialRuns}");
+      Console.WriteLine($"SUCCESSFUL HEISTS: {successfulHeists}");
+      Console.WriteLine($"FAILED HEISTS: {trialRuns - successfulHeists}");
     }
   }
 }
+
