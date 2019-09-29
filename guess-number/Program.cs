@@ -37,24 +37,20 @@ namespace guess_number
 
       // create a random secret number
       Random random = new Random();
-      int secret = random.Next(0, 100);
+      int secret = random.Next(1, 100);
 
-
-      while (guessCount < difficulty)
+      // using for loop
+      for (int i = 0; i < difficulty; i++)
       {
         string guess;
-        Console.Write($"Guesses left({difficulty - guessCount}) - Guess a number between 1 - 100: ");
+        Console.Write($"Guesses left({difficulty - i}) - Guess a number between 1 - 100: ");
         guess = Console.ReadLine();
-
-        // convert string to integer
         int num = Convert.ToInt32(guess);
 
-
-        // evaluate match
         if (num == secret)
         {
           Console.WriteLine("You guessed correctly!");
-          guessCount = difficulty;
+          break;
         }
         else
         {
@@ -66,9 +62,42 @@ namespace guess_number
           {
             Console.WriteLine("Sorry, that's too low.");
           }
-          guessCount++;
         }
       }
+
+      // using while loop
+      /*
+            while (guessCount < difficulty)
+            {
+              string guess;
+              Console.Write($"Guesses left({difficulty - guessCount}) - Guess a number between 1 - 100: ");
+              guess = Console.ReadLine();
+
+              // convert string to integer
+              int num = Convert.ToInt32(guess);
+
+
+              // evaluate match
+              if (num == secret)
+              {
+                Console.WriteLine("You guessed correctly!");
+                guessCount = difficulty;
+              }
+              else
+              {
+                if (num >= secret)
+                {
+                  Console.WriteLine("Sorry, that's too high.");
+                }
+                else
+                {
+                  Console.WriteLine("Sorry, that's too low.");
+                }
+                guessCount++;
+              }
+            }
+
+        */
 
       // display secret number when game over
       if (guessCount == difficulty)
