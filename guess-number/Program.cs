@@ -13,7 +13,7 @@ namespace guess_number
       while (guessCount < 5)
       {
         string guess;
-        Console.Write("Guess a Number: ");
+        Console.Write($"Guesses so far({guessCount}) - Guess a Number: ");
         guess = Console.ReadLine();
 
         // create a secret number
@@ -27,7 +27,7 @@ namespace guess_number
         if (num == secret)
         {
           Console.WriteLine("You guessed correctly!");
-          guessCount++;
+          guessCount = 5;
         }
         else
         {
