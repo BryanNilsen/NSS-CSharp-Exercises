@@ -62,48 +62,58 @@ namespace heist
       int bankDifficulty = 100;
 
 
-      // Create a random number between 0 and 20 for the heist's luck factor.
-      Random random = new Random();
-      int luckFactor = random.Next(0, 20);
+      // After the user enters the team information, prompt them to enter the number of trial runs the program should perform.
+      Console.WriteLine("Enter Number of Trial Runs: ");
+      string trialRunsInput = Console.ReadLine();
+      int trialRuns = Convert.ToInt32(trialRunsInput);
 
-      int teamSkillLevel = 0;
 
-      // Sum the skill levels of the team. Save that number.
-      foreach (Dictionary<string, int> item in team)
+
+      // Run the scenario multiple times.
+      // Loop through the difficulty / skill level calculation based on the user-entered number of trial runs. Choose a new luck factor each time.
+      for (int i = 0; i < trialRuns; i++)
       {
-        foreach (KeyValuePair<string, int> kvp in item)
+
+        // Create a random number between 0 and 20 for the heist's luck factor.
+        Random random = new Random();
+        int luckFactor = random.Next(0, 20);
+
+        int teamSkillLevel = 0;
+
+        // Sum the skill levels of the team. Save that number.
+        foreach (Dictionary<string, int> item in team)
         {
-          teamSkillLevel += kvp.Value;
+          foreach (KeyValuePair<string, int> kvp in item)
+          {
+            teamSkillLevel += kvp.Value;
+          }
+        }
+
+        // Add this number to the team's skill level before comparing it to the bank's difficulty level.
+        // Before displaying the success or failure message, Display a report that shows.
+        // The team's combined skill level
+        // The luck factor
+        // The team's skill level plus the luck factor.
+        // The bank's difficulty.
+
+        Console.WriteLine($"HEIST REPORT:");
+        Console.WriteLine($"  - Team Combined Skill Level: {teamSkillLevel}");
+        Console.WriteLine($"  - LuckFactor: {luckFactor}");
+        Console.WriteLine($"  - Team Skill + Luck: {teamSkillLevel + luckFactor}");
+        Console.WriteLine($"  - Bank Difficulty: {bankDifficulty}");
+
+
+        // Compare the number with the bank's difficulty level. If the team's skill level is greater than or equal to the bank's difficulty level, Display a success message, otherwise display a failure message.
+
+        if (teamSkillLevel + luckFactor >= bankDifficulty)
+        {
+          Console.WriteLine($"The heist was Successful!");
+        }
+        else
+        {
+          Console.WriteLine($"The heist failed!");
         }
       }
-
-      // Add this number to the team's skill level before comparing it to the bank's difficulty level.
-      // Before displaying the success or failure message, Display a report that shows.
-      // The team's combined skill level
-      // The luck factor
-      // The team's skill level plus the luck factor.
-      // The bank's difficulty.
-
-      Console.WriteLine($"HEIST REPORT:");
-      Console.WriteLine($"  - Team Combined Skill Level: {teamSkillLevel}");
-      Console.WriteLine($"  - LuckFactor: {luckFactor}");
-      Console.WriteLine($"  - Team Skill + Luck: {teamSkillLevel + luckFactor}");
-      Console.WriteLine($"  - Bank Difficulty: {bankDifficulty}");
-
-
-      // Compare the number with the bank's difficulty level. If the team's skill level is greater than or equal to the bank's difficulty level, Display a success message, otherwise display a failure message.
-
-      if (teamSkillLevel + luckFactor >= bankDifficulty)
-      {
-        Console.WriteLine($"The heist was Successful!");
-      }
-      else
-      {
-        Console.WriteLine($"The heist failed!");
-      }
-
-
     }
   }
 }
-
