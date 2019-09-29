@@ -11,9 +11,20 @@ namespace guess_number
       Console.Write("Guess a Number: ");
       guess = Console.ReadLine();
 
+      // create a secret number
+      int secret = 42;
+
       // convert string to integer
       int num = Convert.ToInt32(guess);
-      Console.WriteLine("Your guess: {0}", num);
+
+      if (num == secret)
+      {
+        Console.WriteLine("You guessed correctly!");
+      }
+      else
+      {
+        Console.WriteLine("Sorry, you guessed incorrectly.");
+      }
     }
   }
 }
