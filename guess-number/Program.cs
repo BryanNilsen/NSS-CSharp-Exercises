@@ -7,6 +7,31 @@ namespace guess_number
   {
     static void Main(string[] args)
     {
+
+      // set initial difficulty to 0 guesses
+      int difficulty = 0;
+
+      // allow user to choose difficulty
+      string difficultyInput;
+
+      Console.Write($"Choose Difficulty -- Easy(1), Medium(2), Hard(3) : ");
+      difficultyInput = Console.ReadLine();
+
+      // set number of guesses based on user difficulty input
+      if (difficultyInput == "1")
+      {
+        difficulty = 8;
+      }
+      if (difficultyInput == "2")
+      {
+        difficulty = 6;
+      }
+      if (difficultyInput == "3")
+      {
+        difficulty = 4;
+      }
+
+
       // set guess counter
       int guessCount = 0;
 
@@ -15,10 +40,10 @@ namespace guess_number
       int secret = random.Next(0, 100);
 
 
-      while (guessCount < 4)
+      while (guessCount < difficulty)
       {
         string guess;
-        Console.Write($"Guesses left({4 - guessCount}) - Guess a number between 1 - 100: ");
+        Console.Write($"Guesses left({difficulty - guessCount}) - Guess a number between 1 - 100: ");
         guess = Console.ReadLine();
 
         // convert string to integer
@@ -29,7 +54,7 @@ namespace guess_number
         if (num == secret)
         {
           Console.WriteLine("You guessed correctly!");
-          guessCount = 4;
+          guessCount = difficulty;
         }
         else
         {
@@ -44,8 +69,9 @@ namespace guess_number
           guessCount++;
         }
       }
+
       // display secret number when game over
-      if (guessCount == 4)
+      if (guessCount == difficulty)
       {
         Console.WriteLine($"The secret number was {secret}");
       }
