@@ -21,6 +21,7 @@ namespace heist
         Console.WriteLine("Enter Bank Difficulty: ");
         int bankDifficultyInput;
 
+        // ensure input is an integer
         if (!int.TryParse(Console.ReadLine(), out bankDifficultyInput))
         {
           Console.Clear();
