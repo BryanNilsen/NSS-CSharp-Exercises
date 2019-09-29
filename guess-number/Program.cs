@@ -7,23 +7,33 @@ namespace guess_number
   {
     static void Main(string[] args)
     {
-      string guess;
-      Console.Write("Guess a Number: ");
-      guess = Console.ReadLine();
+      // set guess counter
+      int guessCount = 0;
 
-      // create a secret number
-      int secret = 42;
-
-      // convert string to integer
-      int num = Convert.ToInt32(guess);
-
-      if (num == secret)
+      while (guessCount < 5)
       {
-        Console.WriteLine("You guessed correctly!");
-      }
-      else
-      {
-        Console.WriteLine("Sorry, you guessed incorrectly.");
+        string guess;
+        Console.Write("Guess a Number: ");
+        guess = Console.ReadLine();
+
+        // create a secret number
+        int secret = 42;
+
+        // convert string to integer
+        int num = Convert.ToInt32(guess);
+
+
+        // evaluate match
+        if (num == secret)
+        {
+          Console.WriteLine("You guessed correctly!");
+          guessCount++;
+        }
+        else
+        {
+          Console.WriteLine("Sorry, you guessed incorrectly.");
+          guessCount++;
+        }
       }
     }
   }
