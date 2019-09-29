@@ -10,14 +10,16 @@ namespace guess_number
       // set guess counter
       int guessCount = 0;
 
-      while (guessCount < 5)
+      // create a random secret number
+      Random random = new Random();
+      int secret = random.Next(0, 100);
+
+
+      while (guessCount <= 4)
       {
         string guess;
-        Console.Write($"Guesses so far({guessCount}) - Guess a Number: ");
+        Console.Write($"Guesses left({4 - guessCount}) - Guess a number between 1 - 100: ");
         guess = Console.ReadLine();
-
-        // create a secret number
-        int secret = 42;
 
         // convert string to integer
         int num = Convert.ToInt32(guess);
@@ -31,9 +33,14 @@ namespace guess_number
         }
         else
         {
-          Console.WriteLine("Sorry, you guessed incorrectly.");
+          Console.WriteLine("Sorry, try again.");
           guessCount++;
         }
+      }
+
+      if (guessCount == 5)
+      {
+        Console.WriteLine($"The secret number was {secret}");
       }
     }
   }
