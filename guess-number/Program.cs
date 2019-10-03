@@ -43,7 +43,8 @@ namespace guess_number
       for (int i = 0; i < difficulty; i++)
       {
         string guess;
-        Console.Write($"Guesses left({difficulty - i}) - Guess a number between 1 - 100: ");
+        Console.WriteLine($"Guesses left({difficulty - i})");
+        Console.WriteLine($"Guess a number between 1 - 100: ");
         guess = Console.ReadLine();
         int num = Convert.ToInt32(guess);
 
