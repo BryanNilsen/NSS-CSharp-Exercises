@@ -10,15 +10,10 @@ namespace Planner
       _address = address;
     }
 
-    public Building()
-    {
-
-    }
-
     // Private Fields
     private string _designer = "Bryan Nilsen";
     private DateTime _dateConstructed;
-    private string _address = "(address not assigned)";
+    private string _address;
     private string _owner = "(no current owner)";
 
     // Public Read-Write Properties
