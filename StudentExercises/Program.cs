@@ -133,6 +133,7 @@ namespace StudentExercises
       {
         string studentPlural = cohort.Students.Count > 1 ? "students" : "student";
         Console.WriteLine("{0}: {1} {2}", cohort.Name, cohort.Students.Count, studentPlural);
+        Console.WriteLine($"{cohort.Name}: {cohort.Students.Count} {studentPlural}");
       }
     }
   }
